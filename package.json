@@ -1,0 +1,35 @@
+{
+  "name": "labrys-portal",
+  "version": "0.0.1",
+  "browserslist": [
+    "since 2020",
+    "> 0.25%",
+    "not dead"
+  ],
+  "dirs": {
+    "source": "src",
+    "build": "dist"
+  },
+  "audio": {
+    "player": "mplayer",
+    "success_sound": "./build_success.wav"
+  },
+  "author": "akeo",
+  "devDependencies": {
+    "@babel/core": "^7.22.6",
+    "@babel/preset-env": "^7.22.6",
+    "@lodder/grunt-postcss": "^3.1.1",
+    "autoprefixer": "^10.4.14",
+    "babelify": "^10.0.0",
+    "core-js": "^3.31.1",
+    "grunt": "^1.6.1",
+    "grunt-babel": "^8.0.0",
+    "grunt-bake": "^1.9.0",
+    "grunt-browserify": "^6.0.0",
+    "grunt-contrib-nodeunit": "^5.0.0",
+    "grunt-contrib-uglify": "^5.2.2",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-dart-sass": "^2.0.1",
+    "uglify-js": "^3.17.4"
+  }
+}
