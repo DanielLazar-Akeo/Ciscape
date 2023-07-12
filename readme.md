@@ -1,29 +1,18 @@
-# Labrys Portal
-The front-end package for the Labrys user portal
+# Vue 3 + TypeScript + Vite
 
-## Installation
-This is not a Wordpress theme, but rather, a series of raw HTML layouts combined with minified javascript and css to be integrated with a backend solution.
+This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-## Primary dependencies:
-* Grunt
-* NPM
+## Recommended IDE Setup
 
-## Usage:
-Build and source directories can be changed within `package.json`
-> To install all project dependencies, run `npm install`.
+- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-> To build for production, run `grunt`.
+## Type Support For `.vue` Imports in TS
 
-> To watch for any changes, run `grunt watch`.
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-> For updating packages, run `npm update`.
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
-## Grunt plugins used:
-* Browserify (Convert CommonJS to web browser friendly form)
-* Dart-Sass (SCSS compiler to make writing styles easier)
-* PostCSS (For browser compatibility, autoprefixing)
-* UglifyJS (To uglify/obfuscate minified Javascript files)
-* Grunt Bake (To allow for modular HTML during development)
-
-## Notes:
-The `Ping` task is unnecessary for compilation, but provides a nice audio cue for successful builds.
+1. Disable the built-in TypeScript Extension
+   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.

@@ -1,0 +1,194 @@
+.card {
+  $card: &;
+  display: flex;
+  min-width: 360px;
+  width: 100%;
+  border-radius: 24px;
+  background: #FFF;
+  position: relative;
+  overflow: hidden;
+  justify-content: flex-end;
+  box-shadow: 0px 2.3px 2.2px 0px rgba(0, 0, 0, 0.01), 0px 5.3px 5.2px 0px rgba(0, 0, 0, 0.01), 0px 9.6px 9.4px 0px rgba(0, 0, 0, 0.01), 0px 16.0px 15.7px 0px rgba(0, 0, 0, 0.02), 0px 26.4px 25.9px 0px rgba(0, 0, 0, 0.02), 0px 46.2px 45.3px 0px rgba(0, 0, 0, 0.02), 0px 100px 98px 0px rgba(0, 0, 0, 0.03);
+
+  &[data-direction="vertical"] {
+    min-height: 500px;
+    max-height: 500px;
+    flex-direction: column;
+
+    &#{$card} {
+      &--small {
+        max-width: 370px;
+      }
+
+      &--medium {
+        max-width: 470px;
+      }
+
+      &--large {
+        max-width: 766px;
+      }
+    }
+
+    #{$card} {
+      &__text {}
+
+      &__icon {
+        inset: 24px;
+      }
+    }
+  }
+
+  &[data-direction="horizontal"] {
+    min-height: 166px;
+    max-height: 166px;
+    flex-direction: row;
+
+    &#{$card} {
+      &--small {
+        max-width: 549px;
+      }
+
+      &--medium {
+        max-width: 670px;
+      }
+
+      &--large {
+        max-width: 966px;
+      }
+    }
+
+    #{$card} {
+      &__background {
+        max-width: 201px;
+      }
+
+      &__text {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      &__icon {
+        inset: 16px;
+      }
+    }
+  }
+
+  &__background {
+    display: block;
+    height: 100%;
+    position: relative;
+
+    &--hidden {
+      height: 0;
+
+      img {
+        height: 0;
+      }
+    }
+
+    &::before {
+      content: '';
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(16deg, #D59DFF 0%, rgba(213, 157, 255, 0.00) 54.69%);
+    }
+
+    &--overlay {
+      &::before {
+        display: block;
+      }
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__text {
+    background: #FFF;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+
+    &--full-text {
+      padding: 124px 40px 0;
+      inset: 0;
+    }
+
+    &--transparent {
+      padding: 24px 30px;
+      background: transparent;
+      position: absolute;
+      bottom: 0;
+
+      #{$card} {
+
+        &__title,
+        &__message {
+          color: #FFF;
+        }
+
+        &__title {
+          color: #FFF;
+          font-family: var(--helvetica);
+          font-size: 38px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 42px;
+          letter-spacing: -0.76px;
+          text-transform: capitalize;
+          leading-trim: both;
+          text-edge: cap;
+        }
+      }
+    }
+  }
+
+  &__spacer {
+    padding-top: 94px;
+  }
+
+  &__title {
+    color: #3B2E58;
+    font-family: var(--helvetica);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: -0.64px;
+    text-transform: capitalize;
+    text-align: left;
+    leading-trim: both;
+    text-edge: cap;
+    margin: 0;
+  }
+
+  &__message {
+    color: #6F6090;
+    font-family: var(--helvetica-neue);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    text-align: left;
+    margin-top: 25px;
+  }
+}
+
+.content-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  max-width: 46px;
+  max-height: 46px;
+  position: absolute;
+}

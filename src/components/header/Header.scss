@@ -1,0 +1,60 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  min-height: 428px;
+  isolation: isolate;
+  padding: 0 282px 48px;
+
+  &::before {
+    content: '';
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 85.42%);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  &__panel {
+    display: flex;
+    align-items: center;
+    background: #FFF;
+    border-radius: 104px;
+    padding: 12px 33px;
+    box-shadow: 0px 2.3px 2.2px 0px rgba(0, 0, 0, 0.01), 0px 5.3px 5.2px 0px rgba(0, 0, 0, 0.01), 0px 9.6px 9.4px 0px rgba(0, 0, 0, 0.01), 0px 16.0px 15.7px 0px rgba(0, 0, 0, 0.02), 0px 26.4px 25.9px 0px rgba(0, 0, 0, 0.02), 0px 46.2px 45.3px 0px rgba(0, 0, 0, 0.02), 0px 100px 98px 0px rgba(0, 0, 0, 0.03);
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 28px;
+    max-height: 28px;
+    border: none;
+    background: none;
+    padding: 0;
+    outline-color: transparent;
+    color: #C6C6C6;
+    cursor: pointer;
+
+    &:hover {
+      color: #A6A6A6;
+    }
+
+    &:focus,
+    &:active {
+      color: #000;
+    }
+  }
+
+  &__logo {
+    display: block;
+    margin-left: 24px;
+  }
+}
