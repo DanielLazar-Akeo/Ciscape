@@ -53,9 +53,8 @@ function fakeLoader (obj : any) : any {
   });
 };
 
-let asyncBG = null,
-  asyncText = null,
-  asyncCard = null;
+let asyncBG: any = null,
+  asyncText: any = null;
 
 watch(
   () => store.getFakeLoading(),
