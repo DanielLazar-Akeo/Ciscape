@@ -6,14 +6,33 @@
     content: '';
     width: 100%;
     height: 100%;
-    display: block;
-    position: fixed;
+    display: none;
+    position: absolute;
     inset: 0;
     background: linear-gradient(var(--angle), rgba(0, 0, 0, 0) 45%, rgba(255, 255, 255, 1) 50%, rgba(0, 0, 0, 0) 55%);
-    animation: fakeBackgroundLoading 0.8s var(--ease) infinite alternate;
     background-size: 200% 100%;
     mix-blend-mode: overlay;
     pointer-events: none;
+    opacity: 0.4;
+  }
+
+  &--loading {
+    &::after {
+      display: block;
+      animation: fakeBackgroundLoading 0.8s var(--ease) infinite alternate;
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -27,7 +46,8 @@
   position: relative;
   overflow: hidden;
   justify-content: flex-end;
-  box-shadow: 0px 2.3px 2.2px 0px rgba(0, 0, 0, 0.01), 0px 5.3px 5.2px 0px rgba(0, 0, 0, 0.01), 0px 9.6px 9.4px 0px rgba(0, 0, 0, 0.01), 0px 16.0px 15.7px 0px rgba(0, 0, 0, 0.02), 0px 26.4px 25.9px 0px rgba(0, 0, 0, 0.02), 0px 46.2px 45.3px 0px rgba(0, 0, 0, 0.02), 0px 100px 98px 0px rgba(0, 0, 0, 0.03);
+  // box-shadow: 0px 2.3px 2.2px 0px rgba(0, 0, 0, 0.01), 0px 5.3px 5.2px 0px rgba(0, 0, 0, 0.01), 0px 9.6px 9.4px 0px rgba(0, 0, 0, 0.01), 0px 16.0px 15.7px 0px rgba(0, 0, 0, 0.02), 0px 26.4px 25.9px 0px rgba(0, 0, 0, 0.02), 0px 46.2px 45.3px 0px rgba(0, 0, 0, 0.02), 0px 100px 98px 0px rgba(0, 0, 0, 0.03);
+  animation: fadeInUp 1s var(--ease) forwards;
 
   &[data-direction="vertical"] {
     min-height: 500px;
@@ -35,6 +55,7 @@
     flex-direction: column;
 
     &#{$card} {
+
       &--small {
         max-width: 370px;
       }
@@ -61,6 +82,8 @@
     min-height: 166px;
     max-height: 166px;
     flex-direction: row;
+    gap: 24px;
+    justify-content: flex-start;
 
     &#{$card} {
       &--small {
@@ -74,6 +97,54 @@
       &--large {
         max-width: 966px;
       }
+
+      &--huge {
+        min-height: 668px;
+        max-height: 100%;
+        padding: 48px;
+        max-width: 1201px;
+        gap: 84px;
+        align-items: center;
+
+        @media screen and (max-width: 1024px) {
+          height: 100%;
+          gap: 42px;
+          padding: 24px;
+          flex-wrap: wrap;
+        }
+
+        #{$card} {
+          &__background {
+            flex: 1 0 auto;
+            width: 100%;
+            max-width: 468px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 20.077px;
+            box-shadow: 0px 4.7560625076293945px 3.8048501014709473px 0px rgba(39, 5, 33, 0.02), 0px 11.42948055267334px 9.143584251403809px 0px rgba(39, 5, 33, 0.03), 0px 21.52069664001465px 17.216556549072266px 0px rgba(39, 5, 33, 0.04), 0px 38.389244079589844px 30.711395263671875px 0px rgba(39, 5, 33, 0.04), 0px 71.80286407470703px 57.442291259765625px 0px rgba(39, 5, 33, 0.05), 0px 171.86924743652344px 137.49539184570312px 0px rgba(39, 5, 33, 0.07);
+
+            @media screen and (max-width: 1024px) {
+              max-width: 100%;
+              max-height: 379px;
+
+              &>img {
+                width: 100%;
+              }
+            }
+
+            &::after {
+              content: '';
+              display: block;
+              position: absolute;
+              inset: 0;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(21deg, #623097 0%, rgba(98, 48, 151, 0.00) 51.66%), url(<path-to-image>), rgba(211, 211, 211, 0) 50% / cover no-repeat;
+
+            }
+          }
+        }
+      }
     }
 
     #{$card} {
@@ -82,15 +153,114 @@
       }
 
       &__text {
-        display: flex;
         align-items: stretch;
         justify-content: center;
+        padding-left: 0;
       }
 
       &__icon {
         inset: 16px;
       }
     }
+  }
+
+  &__play-audio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 142px;
+    min-height: 57px;
+    padding: 10.038px 13.385px;
+    gap: 13.385px;
+    border-radius: 83.653px;
+    background: #623097;
+    border: none;
+    cursor: pointer;
+
+    @media screen and (max-width: 1024px) {
+      min-width: 127px;
+      min-height: 50px;
+    }
+
+    &:hover {
+      background: #8B60C0;
+    }
+  }
+
+  &__play-icon {
+    max-width: 36px;
+    max-height: 36px;
+
+    @media screen and (max-width: 1024px) {
+      max-width: 30px;
+      max-height: 30px;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__play-text {
+    color: #FFF;
+    font-family: var(--inter);
+    font-size: 20.077px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36.615px;
+    letter-spacing: -0.402px;
+
+    @media screen and (max-width: 1024px) {
+      font-size: 16px;
+    }
+  }
+
+  &__author {
+    color: #623097;
+    font-family: var(--inter);
+    font-size: 19.2px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26.4px;
+    letter-spacing: -0.384px;
+    margin-bottom: 11px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding-bottom: 32px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid rgba(164, 122, 189, 0.20);
+
+    &+#{$card}__message:not(:empty) {
+      margin-top: 0;
+    }
+  }
+
+  &__message-label {
+    color: #623097;
+    font-family: var(--inter);
+    font-size: 14.4px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28.8px;
+    /* 200% */
+    letter-spacing: -0.288px;
+  }
+
+  &__date {
+    color: rgba(59, 46, 88, 0.70);
+    font-family: var(--inter);
+    font-size: 14.4px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25.06px;
+    /* 174.028% */
   }
 
   &__background {
@@ -122,7 +292,7 @@
       }
     }
 
-    img,
+    &>img,
     .img-loading {
       display: block;
       max-width: 100%;
@@ -133,10 +303,6 @@
 
     .img-loading {
       background: rgba(134, 39, 255, 0.40);
-      // background: repeating-linear-gradient(var(--angle), #DBB5FF, rgba(134, 39, 255, 0.40), rgba(142, 141, 236, 0.22), rgba(134, 39, 255, 0.40), #DBB5FF var(--size));
-      // background: repeating-linear-gradient(var(--angle), red, green, blue, green, red var(--size));
-      // background-size: calc(var(--size) / var(--sine)) 100%;
-      // animation: fakeBackgroundLoading 20s linear infinite reverse;
     }
   }
 
@@ -294,7 +460,6 @@
   }
 
   100% {
-    // background-position: calc(var(--size) / var(--sine)) 0;
     background-position: 200% 0%;
   }
 }

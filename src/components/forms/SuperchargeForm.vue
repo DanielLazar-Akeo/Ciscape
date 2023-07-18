@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import './SuperchargeForm.scss';
-import { store } from '../../store';
+import { store } from '@Src/store';
 import { reactive } from 'vue';
 
 const form = reactive({
@@ -22,7 +22,7 @@ function submitForm() {
     <div class="form-panel__title">Apply For A Supercharge</div>
     <form action="#" class="form-panel__form" @submit.prevent="submitForm">
       <input type="text" placeholder="First & Last Name" class="form-panel__field" v-model="form.name">
-      <input type="email" placeholder="Emali Address" class="form-panel__field" v-model="form.email">
+      <input type="email" placeholder="Email Address" class="form-panel__field" v-model="form.email">
       <input type="text" placeholder="Company Website" class="form-panel__field" v-model="form.company">
       <button type="submit" class="form-panel__submit">Apply Now</button>
     </form>

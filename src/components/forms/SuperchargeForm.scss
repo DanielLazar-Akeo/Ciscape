@@ -1,7 +1,6 @@
 .form-panel {
   $el: &;
   display: flex;
-  min-width: 616px;
   max-width: 616px;
   padding: 56px 48px;
   flex-direction: column;
@@ -13,6 +12,10 @@
   box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.25) inset;
   backdrop-filter: blur(23.5px);
   align-items: center;
+
+  @media screen and (min-width: 1024px) {
+    min-width: 616px;
+  }
 
   &__form {
     display: flex;

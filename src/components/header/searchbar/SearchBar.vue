@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { store } from '../../../store.ts';
+import { store } from '@Src/store.ts';
 import { ref } from 'vue';
 import './SearchBar.scss';
 
@@ -14,10 +14,9 @@ const submitToTimeline = () => {
     query: searchText.value
   });
   searchText.value = '';
+  store.setFakeLoading(true);
 };
-
-console.log(store.getSearchTimelineLength());
-console.log(store.searchTimeline);
+// TODO: Fake loading functionality on submit
 </script>
 
 <template>
