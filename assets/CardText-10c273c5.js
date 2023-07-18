@@ -1,0 +1,1 @@
+import{d as s,o as a,c as o,a as t,t as r,r as n,F as l}from"./index-ba956158.js";const c={class:"card__title"},_={class:"card__message"},m=s({__name:"CardText",props:{title:{}},setup(d){return(e,i)=>(a(),o(l,null,[t("h3",c,r(e.title),1),t("div",_,[n(e.$slots,"default")])],64))}});export{m as default};
