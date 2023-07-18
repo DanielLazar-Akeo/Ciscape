@@ -15,11 +15,14 @@ const submitToTimeline = () => {
   });
   searchText.value = '';
 };
+
+console.log(store.getSearchTimelineLength());
+console.log(store.searchTimeline);
 </script>
 
 <template>
   <section class="search-bar">
-    <ul class="search-timeline">
+    <ul class="search-timeline" v-if="store.getSearchTimelineLength() > 0">
       <li v-for="searchQuery in store.searchTimeline" :key="searchQuery.id">{{ searchQuery.query }}</li>
     </ul>
     <form @submit.prevent="submitToTimeline">

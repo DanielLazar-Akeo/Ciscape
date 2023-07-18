@@ -1,0 +1,148 @@
+.form-panel {
+  $el: &;
+  display: flex;
+  min-width: 616px;
+  max-width: 616px;
+  padding: 56px 48px;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  justify-content: flex-end;
+  border-radius: 16px;
+  background: linear-gradient(226deg, rgba(255, 255, 255, 0.80) 0%, rgba(255, 255, 255, 0.24) 28.66%, rgba(255, 255, 255, 0.80) 100%);
+  box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.25) inset;
+  backdrop-filter: blur(23.5px);
+  align-items: center;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+  }
+
+  &__title {
+    text-align: center;
+    font-family: var(--inter);
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -1.08px;
+    background: var(--new, linear-gradient(223deg, #9A56DC 0%, #7434C6 50%, #5856D9 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 36px;
+  }
+
+  &__field {
+    border-radius: 1000px;
+    background: rgba(255, 255, 255, 0.90);
+    width: 100%;
+    border: none;
+    color: #000;
+    font-family: var(--inter);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.48px;
+    padding: 28px 29px 27px;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: -0.565px;
+      padding: 15px 15px 14px;
+      border-radius: 54px;
+    }
+
+    &::placeholder {
+      color: #9694B7;
+      font-family: var(--inter);
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: -0.48px;
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__submit {
+    display: inline-flex;
+    padding: 30px 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1000px;
+    background: linear-gradient(223deg, #DBB5FF 0%, rgba(134, 39, 255, 0.67) 49.48%, rgba(39, 61, 255, 0.67) 100%);
+    color: #FFF;
+    font-family: var(--helvetica-neue);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20.47px;
+    letter-spacing: -0.48px;
+    position: relative;
+    border: none;
+    margin-top: 40px;
+    cursor: pointer;
+    background-position: 50% 0%;
+    background-size: 150% 100%;
+    transition: background 0.1s var(--ease);
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 19px;
+      margin-left: 14px;
+      background-size: cover;
+      background-position: center center;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='21' viewBox='0 0 12 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.510254 18.6558C0.510254 18.3105 0.642364 18.0048 0.884486 17.7626C0.884522 17.7626 0.884559 17.7626 0.884595 17.7625L8.42392 10.2117L0.884595 2.66098C0.642404 2.41879 0.510254 2.11306 0.510254 1.76767C0.510254 1.42228 0.642404 1.11656 0.884595 0.874371C1.12679 0.632179 1.43251 0.500031 1.7779 0.500031C2.12329 0.500031 2.42901 0.632179 2.6712 0.874371L11.1153 9.31844L10.7617 9.672L11.1153 9.31845C11.3575 9.56064 11.4896 9.86636 11.4896 10.2117C11.4896 10.5571 11.3575 10.8629 11.1153 11.105L10.7617 10.7515L11.1153 11.105L2.6712 19.5491C2.42901 19.7913 2.12329 19.9235 1.7779 19.9235C1.43251 19.9235 1.12679 19.7913 0.884595 19.5491C0.642404 19.3069 0.510254 19.0012 0.510254 18.6558Z' fill='white' stroke='white'/%3E%3C/svg%3E%0A");
+      aspect-ratio: 1/1.9;
+    }
+
+    &:hover {
+      background-position: 100% 0;
+    }
+  }
+}
+
+.form-success {
+  display: flex;
+  min-width: 616px;
+  max-width: 616px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  padding: 80px;
+  border-radius: 24px;
+  background: linear-gradient(223deg, #DBB5FF 0%, rgba(134, 39, 255, 0.40) 50%, rgba(142, 141, 236, 0.22) 100%), #818181;
+  backdrop-filter: blur(30px);
+
+  &__icon {
+    display: block;
+    max-width: 92px;
+    max-height: 92px;
+  }
+
+  &__message {
+    color: #FEFEFE;
+    text-align: center;
+    font-family: var(--inter);
+    font-size: 62.4px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -2.496px;
+  }
+}
