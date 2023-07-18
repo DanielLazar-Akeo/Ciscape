@@ -1,1 +1,0 @@
-import{d as o,o as a,c}from"./index-ba956158.js";const n=["src"],d=o({__name:"CardBackground",props:{background:{}},setup(r){return(e,s)=>(a(),c("img",{src:e.background,alt:"A placeholder picture",decoding:"async",loading:"lazy"},null,8,n))}});export{d as default};
