@@ -14,9 +14,9 @@
 .card {
   $card: &;
   display: flex;
-  min-width: 0;
-  min-height: 0;
+  min-width: 320px;
   width: 100%;
+  min-height: 0;
   border-radius: 24px;
   background: #FFF;
   position: relative;
@@ -28,7 +28,7 @@
 
   &[data-direction="vertical"] {
     min-height: 500px;
-    max-height: 500px;
+    // max-height: 500px;
     flex-direction: column;
 
     &#{$card} {
@@ -44,7 +44,7 @@
         max-width: 766px;
 
         @media screen and (max-width: 1024px) {
-          max-width: 100%;
+          // max-width: 100%;
         }
       }
     }
@@ -84,6 +84,7 @@
       &--huge {
         padding: 48px;
         gap: 84px;
+        width: auto;
 
         @media screen and (max-width: 1024px) {
           gap: 42px;
