@@ -121,12 +121,6 @@ watch(
   }
 }
 
-.card:nth-child(1) {
-  margin-top: 120px;
-}
-.card:nth-child(3) {
-  margin-top: 60px;
-}
 </style>
 
 <!-- <style scoped>
