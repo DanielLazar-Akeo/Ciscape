@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { store } from '@Src/store.ts';
-import { reactive, defineAsyncComponent, watch } from 'vue';
-import CardType from './CardType.vue';
+import { reactive, defineAsyncComponent, watch, ref } from 'vue';
 import LOAD_CardText from './LOAD_CardText.vue';
 import ERROR_CardText from './ERROR_CardText.vue';
 import LOAD_CardBackground from './LOAD_CardBackground.vue';
 import ERROR_CardBackground from './ERROR_CardBackground.vue';
+import LOAD_CardType from './LOAD_CardType.vue';
+import ERROR_CardType from './ERROR_CardType.vue';
 import defaultImage from '@Assets/images/image_placeholder.jpg';
 import './Card.scss';
 
@@ -44,113 +45,62 @@ const cardTextStyle = reactive({
 });
 const cardSizeStyle = props.size ? `card--${props.size}` : '';
 
+const componentKey = ref(0);
+
 function fakeLoader (obj : any) : any {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(obj);
-      store.setFakeLoading(false);
     }, store.ASYNC_FAKE_DELAY)
   });
 };
 
-let asyncBG: any = null,
-  asyncText: any = null;
-
-watch(
-  () => store.getFakeLoading(),
+watch(() => store.getSearchTimelineLength(),
   () => {
-    asyncBG = defineAsyncComponent({
-      loader: () => fakeLoader(import('./CardBackground.vue')),
-      loadingComponent: LOAD_CardBackground,
-      errorComponent: ERROR_CardBackground,
-    });
-    asyncText = defineAsyncComponent({
-      loader: () => fakeLoader(import('./CardText.vue')),
-      loadingComponent: LOAD_CardText,
-      errorComponent: ERROR_CardText,
-    });
-  }
-)
+    setTimeout(() => {
+      componentKey.value += 1;
+      doAsyncFakeLoading();
+    }, 0.5);
+  });
 
-asyncBG = defineAsyncComponent({
-  loader: () => fakeLoader(import('./CardBackground.vue')),
-  loadingComponent: LOAD_CardBackground,
-  errorComponent: ERROR_CardBackground,
-});
+let asyncBG: any = null,
+  asyncText: any = null,
+  asyncIcon: any = null;
 
-asyncText = defineAsyncComponent({
-  loader: () => fakeLoader(import('./CardText.vue')),
-  loadingComponent: LOAD_CardText,
-  errorComponent: ERROR_CardText,
-});
+const doAsyncFakeLoading = () => {
+  asyncIcon = defineAsyncComponent({
+    loader: () => fakeLoader(import('./CardType.vue')),
+    loadingComponent: LOAD_CardType,
+    errorComponent: ERROR_CardType,
+  });
 
-// asyncCard = defineAsyncComponent({
-//   loader: () => fakeLoader({
-//     template: `
-//     <div class="card" :class="[ cardSizeStyle ]" :style="{ maxWidth: width + 'px' }" :data-direction="direction">
-//       <div class="card__background" :class="cardBackgroundStyle">
-//         <CardType class="card__icon" :type="type" v-if="layout === 'post'"></CardType>
-//         <asyncBG :background="background"></asyncBG>
-//       </div>
-//       <div class="card__text" :class="cardTextStyle">
-//         <asyncText :title="title" :author="author" :date="date" :layout="layout" :hasAudio="hasAudio">
-//           <slot />
-//         </asyncText>
-//       </div>
-//       <CardType class="card__icon" :type="type" v-if="layout !== 'post'"></CardType>
-//     </div>
-//     `
-//   }),
-//   loadingComponent: {
-//     template: `
-//     <div class="card" :class="[ cardSizeStyle ]" :style="{ maxWidth: width + 'px' }" :data-direction="direction">
-//       <div class="card__background" :class="cardBackgroundStyle">
-//         <CardType class="card__icon" :type="type" v-if="layout === 'post'"></CardType>
-//         <div class="img-loading"></div>
-//       </div>
-//       <div class="card__text" :class="cardTextStyle">
-//         <h3 class="title-loading"></h3>
-//         <div class="message-loading"></div>
-//         <div class="message-loading" style="width: 70%"></div>
-//         <div class="message-loading" style="width: 85%"></div>
-//       </div>
-//       <CardType class="card__icon" :type="type" v-if="layout !== 'post'"></CardType>
-//     </div>
-//     `
-//   },
-//   errorComponent: {
-//     template: `
-//     <div class="card" :class="[ cardSizeStyle ]" :style="{ maxWidth: width + 'px' }" :data-direction="direction">
-//       <div class="card__background" :class="cardBackgroundStyle">
-//         <CardType class="card__icon" :type="type" v-if="layout === 'post'"></CardType>
-//         <asyncBG :background="background"></asyncBG>
-//       </div>
-//       <div class="card__text" :class="cardTextStyle">
-//         <asyncText :title="title" :author="author" :date="date" :layout="layout" :hasAudio="hasAudio">
-//           <slot />
-//         </asyncText>
-//       </div>
-//       <CardType class="card__icon" :type="type" v-if="layout !== 'post'"></CardType>
-//     </div>
-//     `
-//   },
-// });
+  asyncBG = defineAsyncComponent({
+    loader: () => fakeLoader(import('./CardBackground.vue')),
+    loadingComponent: LOAD_CardBackground,
+    errorComponent: ERROR_CardBackground,
+  });
+
+  asyncText = defineAsyncComponent({
+    loader: () => fakeLoader(import('./CardText.vue')),
+    loadingComponent: LOAD_CardText,
+    errorComponent: ERROR_CardText,
+  });
+}
+doAsyncFakeLoading();
+
 </script>
 
-<!-- <template>
-  <asyncCard :class="[ cardSizeStyle ]" :style="{ maxWidth: width + 'px' }" :data-direction="direction" :type="type" :background="background" :title="title" :author="author" :date="date" :layout="layout" :hasAudio="hasAudio" ></asyncCard>
-</template> -->
 <template>
-  <div class="card" :class="[ cardSizeStyle ]" :style="{ maxWidth: width + 'px' }" :data-direction="direction">
+  <div class="card" :class="[ cardSizeStyle ]" :style="{ maxWidth: width + 'px' }" :data-direction="direction" >
     <div class="card__background" :class="cardBackgroundStyle">
-      <CardType class="card__icon" :type="type" v-if="layout === 'post'"></CardType>
-      <asyncBG :background="background"></asyncBG>
+      <asyncIcon class="card__icon" :type="type" v-if="layout === 'post'" :key="componentKey"></asyncIcon>
+      <asyncBG :background="background" @finishedLoading="$emit('finishedLoading')" :key="componentKey"></asyncBG>
     </div>
     <div class="card__text" :class="cardTextStyle">
-      <asyncText :title="title" :author="author" :date="date" :layout="layout" :hasAudio="hasAudio">
+      <asyncText :title="title" :author="author" :date="date" :layout="layout" :hasAudio="hasAudio" :key="componentKey">
         <slot />
       </asyncText>
     </div>
-    <CardType class="card__icon" :type="type" v-if="layout !== 'post'"></CardType>
+    <asyncIcon class="card__icon" :type="type" v-if="layout !== 'post'" :key="componentKey"></asyncIcon>
   </div>
 </template>

@@ -4,7 +4,6 @@ const props = defineProps<{ type: string }>()
 const typeData = props.type.split(' ');
 const typeIcon = typeData[0];
 const typeBackground = typeData[1] ? typeData[1] : 'black';
-
 </script>
 
 <template>

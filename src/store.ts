@@ -10,7 +10,7 @@ export const store = reactive({
   searchTimeline: <any>[],
   formState: 'normal',
   isLoading: false,
-  ASYNC_FAKE_DELAY: 10000,
+  ASYNC_FAKE_DELAY: 2000,
   increment() {
     this.count++;
   },

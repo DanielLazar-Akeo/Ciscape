@@ -18,6 +18,7 @@
     line-height: normal;
     letter-spacing: -0.565px;
     padding: 28px 29px 27px;
+    outline-color: transparent;
 
     @media (max-width: 768px) {
       font-size: 16px;
@@ -42,10 +43,20 @@
         font-size: 16px;
       }
     }
+
+    &:focus,
+    &:active {
+      outline: 2px solid #8B60C0;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #8B60C0;
+    }
   }
 }
 
 .search-timeline {
+  display: none;
   list-style-type: none;
   position: absolute;
   color: #9A9A9A;

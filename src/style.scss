@@ -3,6 +3,7 @@
   --helvetica-neue: 'Helvetica Neue', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --inter: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   --ease: cubic-bezier(.72, 0, .33, 1);
+  --maxWidth: 1366px;
 }
 
 html,
@@ -13,7 +14,7 @@ body {
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #3d3d3d;
+  background-color: #fff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,6 +22,44 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
+  margin: 0;
+}
+
+#app {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+}
+
+body {
+  display: block;
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
 }
 
 *,

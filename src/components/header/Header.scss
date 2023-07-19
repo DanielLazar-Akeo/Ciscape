@@ -6,11 +6,17 @@
   min-height: 428px;
   isolation: isolate;
   overflow: hidden;
+  position: fixed;
+  width: 100%;
+  max-width: var(--maxWidth);
+  bottom: 0;
+  z-index: 10;
   // padding: 0 282px 48px;
 
   &::before {
     content: '';
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 85.42%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.8) 85.42%);
+    border-radius: 52px;
     position: absolute;
     inset: 0;
     z-index: -1;
@@ -23,7 +29,7 @@
     border-radius: 104px;
     padding: 12px clamp(17px, 1vw, 33px);
     box-shadow: 0px 2.3px 2.2px 0px rgba(0, 0, 0, 0.01), 0px 5.3px 5.2px 0px rgba(0, 0, 0, 0.01), 0px 9.6px 9.4px 0px rgba(0, 0, 0, 0.01), 0px 16.0px 15.7px 0px rgba(0, 0, 0, 0.02), 0px 26.4px 25.9px 0px rgba(0, 0, 0, 0.02), 0px 46.2px 45.3px 0px rgba(0, 0, 0, 0.02), 0px 100px 98px 0px rgba(0, 0, 0, 0.03);
-    margin: 0px clamp(12px, 1vw, 20%) 48px;
+    margin: 0px clamp(12px, 1vw, 20%) clamp(12px, 1vw, 20%);
   }
 
   &__buttons {

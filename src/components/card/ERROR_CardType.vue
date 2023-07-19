@@ -7,5 +7,6 @@ defineOptions({
 </script>
 
 <template>
-  <div class="icon-failed"></div>
+  <div class="content-icon black">
+  </div>
 </template>
