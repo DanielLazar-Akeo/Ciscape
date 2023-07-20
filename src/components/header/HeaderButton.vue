@@ -1,14 +1,22 @@
 <script setup lang="ts">
-defineProps<{
+import './Header.scss';
+const props = defineProps<{
   icon: string
 }>();
 
-import './Header.scss'
+const svgWidth = props.icon !== 'mobile' ? 28 : 16;
+const svgHeight = props.icon !== 'mobile' ? 28 : 17;
+const svgViewbox = props.icon !== 'mobile' ? '0 0 28 28' : '0 0 16 17';
+
 </script>
 
 <template>
-<button class="header__button">
-  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+<button :class="{'header__button': icon !== 'mobile', 'header__mobile-menu-button': icon === 'mobile'}">
+  <svg xmlns="http://www.w3.org/2000/svg" :width="svgWidth" :height="svgHeight" :viewBox="svgViewbox" fill="none">
+    <g v-if="icon === 'mobile'">
+      <path d="M8 1.5V15.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M15 8.5L1 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
 
     <path d="M12.2979 23.7117C12.6908 24.0999 13.3239 24.0962 13.7121 23.7033C14.1003 23.3105 14.0965 22.6773 13.7037 22.2891L6.32743 15.0004L24.0027 15.0004C24.555 15.0004 25.0027 14.5527 25.0027 14.0004C25.0027 13.4481 24.555 13.0004 24.0027 13.0004L6.32972 13.0004L13.7037 5.714C14.0965 5.32581 14.1003 4.69266 13.7121 4.29981C13.3239 3.90696 12.6908 3.90318 12.2979 4.29137L3.37092 13.1124C2.87571 13.6017 2.87571 14.4014 3.37092 14.8907L12.2979 23.7117Z" fill="currentColor" v-if="icon === 'back'"/>
 

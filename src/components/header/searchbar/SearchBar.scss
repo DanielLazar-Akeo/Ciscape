@@ -4,6 +4,10 @@
   margin-left: 21px;
   flex: 1 1 auto;
 
+  @media screen and (max-width: 768px) {
+    margin-left: 8px;
+  }
+
   &__input {
     border-radius: 104px;
     border: 2px solid #E7E7E7;
@@ -21,11 +25,11 @@
     outline-color: transparent;
 
     @media (max-width: 768px) {
-      font-size: 16px;
+      font-size: 12.138px;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
-      letter-spacing: -0.565px;
+      letter-spacing: -0.243px;
       padding: 15px 15px 14px;
       border-radius: 54px;
     }
@@ -40,7 +44,8 @@
       letter-spacing: -0.565px;
 
       @media (max-width: 768px) {
-        font-size: 16px;
+        font-size: 12.138px;
+        letter-spacing: -0.243px;
       }
     }
 

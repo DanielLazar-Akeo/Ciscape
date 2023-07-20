@@ -36,6 +36,63 @@
     display: flex;
     align-items: center;
     gap: 16px;
+
+    @media screen and (max-width: 425px) {
+      opacity: 0;
+      pointer-events: none;
+      border-radius: 40px;
+      background: #FFF;
+      padding: 10px 18px;
+      gap: 13.867px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      margin: 0px clamp(12px, 1vw, 20%);
+      transform: translateY(-50px);
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+
+    &--active {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(-100px);
+    }
+  }
+
+  &__mobile-menu-button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #E7E7E7;
+    max-width: 40px;
+    max-height: 40px;
+    width: 40px;
+    height: 40px;
+    flex: 1 0 auto;
+    border-radius: 19.5px;
+    background: none;
+    padding: 0;
+    outline-color: transparent;
+    color: #C6C6C6;
+    cursor: pointer;
+
+    @media screen and (max-width: 425px) {
+      display: flex;
+    }
+
+    &:hover {
+      color: #FFF;
+      border-color: #C6C6C6;
+      background: #C6C6C6;
+    }
+
+    &:focus,
+    &:active {
+      color: #FFF;
+      border-color: #C6C6C6;
+      background: #C6C6C6;
+    }
   }
 
   &__button {
@@ -50,6 +107,11 @@
     outline-color: transparent;
     color: #C6C6C6;
     cursor: pointer;
+
+    @media screen and (max-width: 425px) {
+      max-width: 24px;
+      max-height: 28px;
+    }
 
     &:hover {
       color: #A6A6A6;
@@ -69,7 +131,8 @@
 
     @media (max-width: 768px) {
       max-width: 35px;
-      max-height: 42px;
+      max-height: 35px;
+      margin-left: 16px;
     }
   }
 }

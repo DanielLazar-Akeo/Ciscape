@@ -2,11 +2,20 @@
 import SearchBar from './searchbar/SearchBar.vue';
 import HeaderButton from './HeaderButton.vue';
 import './Header.scss';
+
+const openMobileMenu = () => {
+  let headerButtons = document.querySelector('.header__buttons');
+
+  if (!headerButtons) return;
+
+  headerButtons.classList.toggle('header__buttons--active');
+};
 </script>
 
 <template>
   <header class="header">
     <div class="header__panel">
+      <HeaderButton icon="mobile" @click="openMobileMenu"></HeaderButton>
       <div class="header__buttons">
         <HeaderButton icon="back" @click=""></HeaderButton>
         <HeaderButton icon="forward" @click=""></HeaderButton>
