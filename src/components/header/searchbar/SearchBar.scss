@@ -1,22 +1,18 @@
 .search-bar {
   border-radius: 104px;
   background: #FFF;
-  margin-left: 21px;
+  margin-left: clamp(8px, 1vw + 8px, 21px);
   flex: 1 1 auto;
 
-  @media screen and (max-width: 768px) {
-    margin-left: 8px;
-  }
-
   &__input {
-    border-radius: 104px;
+    border-radius: clamp(54px, 1vw + 54px, 104px);
     border: 2px solid #E7E7E7;
     background: #FFF;
     width: 100%;
 
     color: #000;
     font-family: var(--inter);
-    font-size: 28.233px;
+    font-size: clamp(12px, 1vw + 12px, 28px);
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -25,26 +21,24 @@
     outline-color: transparent;
 
     @media (max-width: 768px) {
-      font-size: 12.138px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      letter-spacing: -0.243px;
+      // font-size: 12.138px;
+      // letter-spacing: -0.243px;
       padding: 15px 15px 14px;
-      border-radius: 54px;
+      // border-radius: 54px;
     }
 
     &::placeholder {
       color: #9A9A9A;
       font-family: var(--inter);
-      font-size: 28.233px;
+      font-size: clamp(12px, 1vw + 12px, 28px);
+      // font-size: 28.233px;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
       letter-spacing: -0.565px;
 
       @media (max-width: 768px) {
-        font-size: 12.138px;
+        // font-size: 12.138px;
         letter-spacing: -0.243px;
       }
     }

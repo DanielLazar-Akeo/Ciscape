@@ -1,5 +1,6 @@
 .card-loader {
-  display: flex;
+  display: block;
+  padding-bottom: 428px;
   gap: 60px;
   position: relative;
   background: white;
@@ -47,27 +48,17 @@
   }
 }
 
-// @keyframes fadeOutUp {
-//   0% {
-//     opacity: 1;
-//     transform: translateY(0);
-//   }
+.card-list {
+  max-width: calc(((var(--card-small) * var(--card-spacing) * var(--card-max))) + (var(--container-padding) * 2));
+  margin: 0 auto;
 
-//   50% {
-//     opacity: 0;
-//     transform: translateY(-50%);
-//     pointer-events: none;
-//   }
+  @media screen and (min-width: 768px) {
+    padding: 0 var(--container-padding);
+  }
 
-//   51% {
-//     opacity: 0;
-//     transform: translateY(50%);
-//     pointer-events: none;
-//   }
-
-//   100% {
-//     opacity: 1;
-//     transform: translateY(0);
-//     pointer-events: auto;
-//   }
-// }
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

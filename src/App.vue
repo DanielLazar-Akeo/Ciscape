@@ -22,26 +22,25 @@ import example8 from '@Assets/images/image_example_8.jpg';
 // import example9 from '@Assets/images/image_example_9.jpg';
 // import example10 from '@Assets/images/image_example_10.jpg';
 
-const masonryOptions = {
-  itemSelector: '.card',
-  gutter: 40,
-  percentPosition: true,
-  resize: true
-};
-
 let cardLayout : any = {};
 function readjustMasonryLayout() {
-  let cardGrid: Element = document.querySelector('.card-list') as Element;
-
   if (cardLayout._isLayoutInited) {
     cardLayout.destroy();
   };
 
-  cardLayout = new Masonry(cardGrid, masonryOptions);
+  cardLayout = new Masonry(document.querySelector('.card-list') as Element, {
+    itemSelector: '.card',
+    // columnWidth: '.card-column-sizer',
+    columnWidth: 1,
+    gutter: '.card-gutter',
+  });
 }
 
 onMounted(() => {
   store.setFakeLoading(true);
+  document.querySelectorAll('.card').forEach(card => {
+    card.classList.add('card--is-loading');
+  });
 
   readjustMasonryLayout();
 
@@ -57,6 +56,9 @@ watch(
   () => {
     setTimeout(() => {
       store.setFakeLoading(false);
+      document.querySelectorAll('.card').forEach(card => {
+        card.classList.remove('card--is-loading');
+      });
     }, store.ASYNC_FAKE_DELAY);
   }
 )
@@ -66,6 +68,8 @@ watch(
   <Header></Header>
   <CardLoader :class="{'card-loader--loading': store.getFakeLoading(), 'card-loader--new-query': store.getSearchTimelineLength() && store.getFakeLoading()}">
     <div class="card-list">
+      <div class="card-column-sizer"></div>
+      <div class="card-gutter"></div>
       <Card type="book lighter-purple" size="small" layout="mixed" title="Helping startups deliver AI responsibly" @finishedLoading="readjustMasonryLayout"></Card>
       <Card type="cursor orange" size="small" layout="cta" title="Take your idea to 
       the next stage with Microsoft for Startups Founders Hub" :background="example6" @finishedLoading="readjustMasonryLayout">Free Microsoft tools | Azure credits | Exclusive partner offers | Expert guidance</Card>
@@ -81,80 +85,12 @@ watch(
         Microsoft for Startups Founders Hub helps startups embrace the transformative power of AI with free access to industry-leading AI technology, including OpenAI, that empowers startups to unlock increased scalability and supercharged growth.
       </Card>
       <Card type="book lighter-purple" size="large" layout="mixed" title="A New Generation of Products" @finishedLoading="readjustMasonryLayout" :background="example8"></Card>
-      <!-- <Card type="question blue" size="small" direction="horizontal" title="How to stay ahead of the curve?" @finishedLoading="readjustMasonryLayout" :background="example9"></Card>
-      <Card type="question blue" size="small" direction="horizontal" title="How to Support your growing startup?" @finishedLoading="readjustMasonryLayout" :background="example10"></Card> -->
+      <!-- <Card type="question blue" size="medium" direction="horizontal" title="How to stay ahead of the curve?" @finishedLoading="readjustMasonryLayout" :background="example9"></Card>
+      <Card type="question blue" size="medium" direction="horizontal" title="How to Support your growing startup?" @finishedLoading="readjustMasonryLayout" :background="example10"></Card> -->
     </div>
   </CardLoader>
   <Footer></Footer>
 </template>
 
 <style scoped lang="scss">
-.card-loader {
-  display: block;
-  padding-bottom: 428px;
-}
-.card-list {
-  /* 3xCardSmall + 2xGutter */
-  $CardSmall3x: 370px * 3;
-  $Gutter2x: 80px;
-  $padding: 30px;
-  max-width: ($CardSmall3x + $Gutter2x + ($padding * 2));
-  margin: 0 auto;
-  padding: 0 $padding;
-
-  &::before,
-  &::after {
-    content: '';
-    display: none;
-    background: green;
-    opacity: 0.5;
-    width: $padding;
-    position: absolute;
-    height: 100%;
-    top: 0;
-    z-index: 9;
-  }
-
-  &::before {
-    left: 0;
-  }
-
-  &::after {
-    right: 0;
-  }
-}
-
 </style>
-
-<!-- <style scoped>
-.card-loader {
-  flex-direction: row;
-  padding-bottom: 428px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.card-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-}
-.card-list--vertical {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  justify-content: center;
-}
-
-@media screen and (min-width: 1024px) {
-  .card-list--vertical:nth-child(1) {
-    margin-top: 240px;
-  }
-  .card-list--vertical:nth-child(2) {
-    margin-top: -240px;
-  }
-  .card-list--vertical:nth-child(3) {
-    margin-top: 0;
-  }
-}
-</style> -->

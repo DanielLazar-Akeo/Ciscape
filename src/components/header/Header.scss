@@ -8,7 +8,7 @@
   overflow: hidden;
   position: fixed;
   width: 100%;
-  max-width: var(--maxWidth);
+  max-width: var(--max-width);
   bottom: 0;
   z-index: 10;
   // padding: 0 282px 48px;
@@ -16,10 +16,11 @@
   &::before {
     content: '';
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.8) 85.42%);
-    border-radius: 52px;
+    // border-radius: 52px;
     position: absolute;
     inset: 0;
     z-index: -1;
+    pointer-events: none;
   }
 
   &__panel {
@@ -125,6 +126,8 @@
 
   &__logo {
     display: block;
+    max-width: 67px;
+    max-height: 69px;
     margin-left: 24px;
     width: auto;
     object-fit: contain;

@@ -33,6 +33,13 @@ const props =
   }
 );
 
+const cardSizeStyle = props.size ? `card--${props.size}` : '';
+const cardLayoutModifier = reactive({
+  'card--horizontal': props.direction === 'horizontal',
+  'card--vertical': props.direction === 'vertical',
+  'card--cta': props.layout === 'cta',
+  'card--post': props.layout === 'post',
+});
 const cardBackgroundStyle = reactive({
   'card__background--overlay': props.layout === 'background',
   'card__background--hidden': props.layout === 'full-text',
@@ -43,7 +50,6 @@ const cardTextStyle = reactive({
   'card__text--cta': props.layout === 'cta',
   'card__text--post': props.layout === 'post',
 });
-const cardSizeStyle = props.size ? `card--${props.size}` : '';
 
 const componentKey = ref(0);
 
@@ -91,7 +97,7 @@ doAsyncFakeLoading();
 </script>
 
 <template>
-  <div class="card" :class="[ cardSizeStyle ]" :style="{ maxWidth: width + 'px' }" :data-direction="direction" >
+  <div class="card" :class="[ cardSizeStyle, cardLayoutModifier ]" :style="{ maxWidth: width + 'px' }">
     <div class="card__background" :class="cardBackgroundStyle">
       <asyncIcon class="card__icon" :type="type" v-if="layout === 'post'" :key="componentKey"></asyncIcon>
       <asyncBG :background="background" @finishedLoading="$emit('finishedLoading')" :key="componentKey"></asyncBG>
