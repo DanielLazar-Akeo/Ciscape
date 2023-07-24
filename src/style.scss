@@ -11,10 +11,10 @@
   --card-spacing: 40px;
   --vf: calc((var(--card-spacing) * 2) - var(--container-padding));
   --container-size: calc(((var(--card-small) * var(--card-spacing) * var(--card-max))) - (var(--container-padding) * 2));
-  --card-small: clamp(300px, 100vw - var(--vf), 370px);
-  --card-medium: clamp(300px, 100vw - var(--vf), 470px);
-  --card-large: clamp(300px, 100vw - var(--vf), 766px);
-  --card-huge: clamp(300px, 100vw - var(--vf), var(--container-size));
+  --card-small: clamp(240px, 100vw - var(--vf), min(370px, 100%));
+  --card-medium: clamp(240px, 100vw - var(--vf), min(470px, 100%));
+  --card-large: clamp(240px, 100vw - var(--vf), min(766px, 100%));
+  --card-huge: clamp(240px, 100vw - var(--vf), var(--container-size));
 }
 
 html,

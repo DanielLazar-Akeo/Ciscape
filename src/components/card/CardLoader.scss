@@ -49,12 +49,8 @@
 }
 
 .card-list {
-  max-width: calc(((var(--card-small) * var(--card-spacing) * var(--card-max))) + (var(--container-padding) * 2));
-  margin: 0 auto;
-
-  @media screen and (min-width: 768px) {
-    padding: 0 var(--container-padding);
-  }
+  max-width: var(--container-size);
+  margin: 0 var(--container-padding);
 
   &::after {
     content: '';
